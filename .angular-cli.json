@@ -1,0 +1,88 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "ecommerce"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+        "styles.css",
+        "./assets/vendor/bootstrap/css/bootstrap.min.css",
+        "./assets/fonts/font-awesome/css/font-awesome.min.css",
+        "./assets/fonts/themify/themify-icons.css",
+        "./assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css",
+        "./assets/fonts/elegant-font/html-css/style.css",
+        "./assets/vendor/animate/animate.css",
+        "./assets/vendor/css-hamburgers/hamburgers.min.css",
+        "./assets/vendor/animsition/css/animsition.min.css",
+        "./assets/vendor/select2/select2.min.css",
+        "./assets/vendor/daterangepicker/daterangepicker.css",
+        "./assets/vendor/slick/slick.css",
+        "./assets/css/util.css",
+        "./assets/css/main.css"
+        
+      ],
+      "scripts": [
+        "./assets/vendor/jquery/jquery-3.2.1.min.js",
+        "./assets/vendor/animsition/js/animsition.min.js",
+        "./assets/vendor/bootstrap/js/popper.js",
+        "./assets/vendor/bootstrap/js/bootstrap.min.js",
+        "./assets/vendor/select2/select2.min.js",
+        "./assets/vendor/slick/slick.min.js",
+        "./assets/js/slick-custom.js",
+        "./assets/vendor/countdowntime/countdowntime.js",
+        "./assets/vendor/lightbox2/js/lightbox.min.js",
+        "./assets/vendor/sweetalert/sweetalert.min.js",
+        "./assets/js/main.js",
+        "./assets/js/common.js"
+
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }
+}
