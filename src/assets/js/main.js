@@ -1,5 +1,5 @@
 
-(function ($) {
+  $(document).ready(function () {
     "use strict";
 
     /*[ Load page ]
@@ -44,6 +44,7 @@
     /*[ Show header dropdown ]
     ===========================================================*/
     $('.js-show-header-dropdown').on('click', function(){
+
         $(this).parent().find('.header-dropdown')
     });
 
@@ -201,4 +202,4 @@
         $('.video-mo-01').css('opacity','0');
     });
 
-})(jQuery);
+});

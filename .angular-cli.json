@@ -31,6 +31,7 @@
         "./assets/vendor/select2/select2.min.css",
         "./assets/vendor/daterangepicker/daterangepicker.css",
         "./assets/vendor/slick/slick.css",
+        "./assets/vendor/noui/nouislider.min.css",
         "./assets/css/util.css",
         "./assets/css/main.css"
         
@@ -46,6 +47,7 @@
         "./assets/vendor/countdowntime/countdowntime.js",
         "./assets/vendor/lightbox2/js/lightbox.min.js",
         "./assets/vendor/sweetalert/sweetalert.min.js",
+        "./assets/vendor/noui/nouislider.min.js",
         "./assets/js/main.js",
         "./assets/js/common.js"
 
