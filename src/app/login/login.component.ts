@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   public shouldShow :boolean = false;
   public shouldShow1 :boolean = false;
   public loginStatus :boolean = false;
-  public success 	   :boolean = false;
 
   constructor(private signupservice : SignupService,private router: Router) { }
 
@@ -49,12 +48,14 @@ export class LoginComponent implements OnInit {
         res => {
           try {
               if(res.status){
-                this.success = true;
+                this.loginStatus = true;
                 this.form.reset();
-                this.msg = 'Login Successfully';
+                this.className = 'success';
+                this.msg = res.msg;
                 setTimeout(() => {  this.router.navigate(['/']); }, 2000);
               }else{
-                console.log('error to insert data');
+                this.className = 'danger';
+                this.msg = res.msg;
               }
           } catch (e) {
             console.log('Success Exception LoginComponent signupService' + e);
@@ -65,6 +66,7 @@ export class LoginComponent implements OnInit {
             console.log('Error :' + err);
           } catch (e) {
             console.log('Error Exception LoginComponent signupService ' + e);
+            
           }
         }
       );

@@ -43,12 +43,12 @@ router.post('/signup', bodyParser.json(),function(req, res, next) {
 router.post('/login', bodyParser.json(),function(req, res, next) {
   var email = req.body.email;
   var pass = req.body.pass;
-  var sql = "select count(id) from users where email='"+first_name+"' and password = '"+pass+"'";  
+  var sql = "select count(id) from users where email='"+email+"' and password = '"+pass+"'";  
   con.query(sql, function (err, result) {
     if (err){
-      res.send({'status':false,'err':err});
+      res.send({'status':false,'err':err,'msg':'error in query'});
     }else{
-      if (Count(result)>0){
+      if (result.length>0){
         res.send({'status':true,'msg':'Login Successfully','statusCode':200});
       }else{
         res.send({'status':true,'msg':'Username and password not match..','statusCode':201});
