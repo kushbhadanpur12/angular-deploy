@@ -1,0 +1,77 @@
+<div class="top-spacing">
+<div class="container">
+	<div class="row">  
+		<div class="col-sm-4 col-md-4"></div>
+		<div class="col-sm-4 col-md-4">
+			<div *ngIf="success">
+				<div class="alert alert-success">
+					{{ msg }}
+				</div>
+		 </div>
+ <form class="form-horizontal" [formGroup]="form" novalidate>
+  <fieldset>
+    <div id="legend" style="background-color: #68d568">
+      <legend class="" style="text-align: center;color: white;">Signup</legend>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label"  for="fname">First Name</label>
+      <div class="controls">
+        <input type="text" id="fname" [(ngModel)]="fname" formControlName="fname"
+        [ngClass]="{'myclass': shouldShow,'form-control':true}" (keyup)="onKey($event)"
+        pattern="[a-zA-Z ]*">
+      </div>
+    </div>
+
+ 	<div class="control-group">
+      <label class="control-label" for="lname">Last Name</label>
+      <div class="controls">
+        <input type="text" id="lname" [(ngModel)]="lname" formControlName="lname" 
+        [ngClass]="{'myclass': shouldShow1,'form-control':true}" (keyup)="onKey($event)">
+      </div>
+    </div>
+ 
+    <div class="control-group">
+      <label class="control-label" for="email">E-mail</label>
+      <div class="controls">
+        <input type="text" id="email" [(ngModel)]="email" formControlName="email" 
+        [ngClass]="{'myclass': shouldShow2,'form-control':true}" (keyup)="onKey($event)">
+      </div>
+      <p class="inline-error" *ngIf="(!form.get('email').hasError('required') && form.get('email').hasError('email'))|| (this.form.get('email').hasError('pattern'))" > Email is Invalid ! </p>
+      <div class="inline-error" *ngIf="duplicate_email">{{ msg }}</div>
+    </div>
+ 
+    <div class="control-group">
+      <label class="control-label" for="password">Password</label>
+      <div class="controls">
+        <input type="password" id="password" [(ngModel)]="pwd" formControlName="pwd"
+         [ngClass]="{'myclass': shouldShow3,'form-control':true}" (keyup)="onKey($event)">
+      </div>
+    </div>
+ 
+
+     <div class="control-group">
+      <label class="control-label" for="mobile">Mobile Number</label>
+      <div class="controls">
+        <input type="text" id="mobile" [(ngModel)]="mobile" formControlName="mobile" 
+        [ngClass]="{'myclass': shouldShow4,'form-control':true}" (keyup)="onKey($event)">
+      </div>
+      <div class="inline-error" *ngIf="duplicate_mobile">{{ msg }}</div>
+    </div>
+
+
+    <div class="control-group" style="margin: 5% 0 18% 0">
+      <div class="controls">
+        <button class="btn btn-success" type="submit" name="button" (click)="customvalidation(form)">Register</button>
+       <a routerLink="/"> <button class="btn btn-default" style="margin-left: 5%;">Login</button></a>
+      </div>
+     
+    </div>
+  </fieldset>
+</form>
+
+		</div>
+		<div class="col-sm-4 col-md-4"></div>
+	</div>
+</div>
+</div>

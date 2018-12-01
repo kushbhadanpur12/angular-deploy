@@ -1,0 +1,14 @@
+.top-spacing{
+    padding-top: 3%;
+}
+.myclass{
+    border: 2px solid red;
+}
+.inline-error{
+	 color: red;
+}
+input {
+	outline: gray;
+	border: 1PX solid #ccc;
+	border-radius: 4PX;
+}

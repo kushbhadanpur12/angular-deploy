@@ -134,16 +134,18 @@ ul, li {
 	margin: 0px;
 	list-style-type: none;
 }
-
+.s-text7{
+  border: none;
+}
 
 /* ------------------------------------ */
 input {
-	outline: none;
-	border: none !important;
+	/* outline: none;
+	border: none !important; */
 }
 
 textarea {
-  outline: none;
+  /* outline: none; */
 }
 
 /* textarea:focus, input:focus {
