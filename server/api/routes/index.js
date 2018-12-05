@@ -4,6 +4,25 @@ const bodyParser = require("body-parser");
 var url = require('url');
 var app = express();
 app.use(bodyParser.json());
+var fs = require('fs');
+var mailer = require('nodemailer');
+const path = require('path');
+const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
+// mailer.SMTP = {
+//     host: 'gmail.com', 
+//     port:587,
+//     use_authentication: true, 
+//     user: 'lavkush.gupta@icorprated.com', 
+//     pass: 'Kush@0000'
+// };
+
+var transporter = mailer.createTransport({
+  service: 'Gmail',
+  auth: {
+      user: 'lavkush.gupta@icorprated.com',
+      pass: 'Kush@0000'
+  }
+});
 
 var router = express.Router();
 const con = mysql.createConnection({
@@ -49,7 +68,32 @@ router.post('/login', bodyParser.json(),function(req, res, next) {
       res.send({'status':false,'err':err,'msg':'error in query'});
     }else{
       if (result.length>0){
+        
+          const options = {
+            from: 'lavkush.maihar01@gmail.com',
+            to: 'lavkush.gupta@icorprated.com',
+            subject: 'Login Successfully',
+            text: 'You have login currently using Ubantu!',
+            attachments: [
+               {
+                'filename':'test4.jpg',
+                //'path': ABSPATH + '/attachment.txt'
+                 path:'/root/Documents/kush/angular-ecommerce/test4.jpg'
+               }
+            ]
+        };
+        transporter.sendMail(options, (error, info) =>{
+              if(error) {
+                  //...
+              } else {
+                  //...
+              }
+          });
+          console.log(ABSPATH + '/attachment.txt');
         res.send({'status':true,'msg':'Login Successfully','statusCode':200});
+  
+      // End Mail Function
+
       }else{
         res.send({'status':true,'msg':'Username and password not match..','statusCode':201});
       }
@@ -57,7 +101,5 @@ router.post('/login', bodyParser.json(),function(req, res, next) {
     }
   });
 });
-
-
 
 module.exports = router;
