@@ -50,6 +50,7 @@
       filterBar.noUiSlider.on('update', function( values, handle ) {
           skipValues[handle].innerHTML = Math.round(values[handle]) ;
       });
-  
+ 
+        
 
  });

@@ -8,13 +8,6 @@ var fs = require('fs');
 var mailer = require('nodemailer');
 const path = require('path');
 const ABSPATH = path.dirname(process.mainModule.filename); // Absolute path to our app directory
-// mailer.SMTP = {
-//     host: 'gmail.com', 
-//     port:587,
-//     use_authentication: true, 
-//     user: 'lavkush.gupta@icorprated.com', 
-//     pass: 'Kush@0000'
-// };
 
 var transporter = mailer.createTransport({
   service: 'Gmail',
@@ -54,6 +47,19 @@ router.post('/signup', bodyParser.json(),function(req, res, next) {
     if (err){
       res.send({'status':false,'err':err});
     }else{
+      const options = {
+        from: 'lavkush.maihar01@gmail.com',
+        to: email,
+        subject: 'Registration',
+        text: 'You have registered successfully! Please proceed to login...'
+    };
+    transporter.sendMail(options, (error, info) =>{
+          if(error) {
+            console.log('mail sent successfully......');
+          } else {
+              console.log('mail sent successfully......');
+          }
+      });
       res.send({'status':true});
     }
   });
@@ -68,7 +74,6 @@ router.post('/login', bodyParser.json(),function(req, res, next) {
       res.send({'status':false,'err':err,'msg':'error in query'});
     }else{
       if (result.length>0){
-        
           const options = {
             from: 'lavkush.maihar01@gmail.com',
             to: 'lavkush.gupta@icorprated.com',
@@ -101,5 +106,47 @@ router.post('/login', bodyParser.json(),function(req, res, next) {
     }
   });
 });
+
+
+
+router.post('/contactus', bodyParser.json(),function(req, res, next) {
+  var email = req.body.email;
+  var name = req.body.name;
+  var mobile = req.body.mobile;
+  var subject = req.body.subject;
+  var message = req.body.message;
+  var attachment = req.body.message;
+  var sql = "INSERT INTO contact (name,message,email,subject,mobile,attachment)" +
+            "VALUES ('"+name+"','"+message+"','"+email+"','"+subject+"',"+mobile+",'"+attachment+"')"; 
+    con.query(sql, function (err, result) {
+    if (err){
+      res.send({'status':false,'err':err,'msg':'error in query'});
+    }else{
+      if (result.affectedRows>0){
+          const options = {
+            from: 'lavkush.maihar01@gmail.com',
+            to: email,
+            subject: subject,
+            text: message
+        };
+        transporter.sendMail(options, (error, info) =>{
+              if(error) {
+                  //...
+              } else {
+                  //...
+              }
+          });
+        res.send({'status':true,'msg':'contact us form Successfully submitted','statusCode':200});
+  
+      // End Mail Function
+
+      }else{
+        res.send({'status':true,'msg':'data not store in table','statusCode':201});
+      }
+      
+    }
+  });
+});
+
 
 module.exports = router;

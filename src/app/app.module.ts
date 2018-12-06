@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, Router, ActivatedRoute}  from '@angular/router';
-import {ReactiveFormsModule ,Form, FormGroup, Validators ,FormControl,Validator,FormsModule } from '@angular/forms';
+import {ReactiveFormsModule ,Form, FormBuilder, FormGroup, Validators ,FormControl,Validator,FormsModule } from '@angular/forms';
 import {AbstractControl} from '@angular/forms';
 import { Http ,Response } from "@angular/http";
 import { HttpClientModule } from  '@angular/common/http';
@@ -28,6 +28,7 @@ import { LoginComponent } from './login/login.component';
 // Services
 
 import { SignupService } from './services/signup.service';
+import { EmailtemplateComponent } from './emailtemplate/emailtemplate.component';
 
 
 
@@ -50,7 +51,8 @@ import { SignupService } from './services/signup.service';
     ProductDetailComponent,
     BlogDetailComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    EmailtemplateComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ import { SignupService } from './services/signup.service';
       { path: 'product-detail', component: ProductDetailComponent },
       { path: 'blog-detail', component: BlogDetailComponent },
       { path: 'signup', component: SignupComponent },
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'email-sent', component: EmailtemplateComponent },
     ])
   ],
   exports:[RouterModule],
